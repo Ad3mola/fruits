@@ -12,6 +12,15 @@ export interface IData {
   collection: string;
 }
 
+/*
+  * Filtered the data object for only fruits containing the Organic Banana Recipe and it down to the card component
+
+  * A Search Component is created as an extra feature to search for all types of recipes in the data object and not just Organic Banana
+
+  *Uncomment block of codes to test the Search feature and comment the Organic banana filter function
+
+  */
+
 // type FormElem = React.FormEvent<HTMLFormElement>;
 
 function Home(): JSX.Element {
@@ -31,6 +40,7 @@ function Home(): JSX.Element {
   //   setFruits(data);
   // };
 
+  /* Organic Banana function */
   const recipe: string = "Organic Banana";
   const fruits = data.filter((fruit) =>
     fruit.recipes.includes(recipe.toLowerCase())
