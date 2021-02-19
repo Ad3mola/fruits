@@ -1,7 +1,9 @@
-function App() {
+import Home from "./components/views/Home/Home";
+
+function App(): JSX.Element {
   return (
-    <div className="App" data-test="app-component">
-      hello
+    <div className="container mt-5" data-test="app-component">
+      <Home />
     </div>
   );
 }
