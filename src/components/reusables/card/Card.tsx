@@ -1,8 +1,8 @@
 import React from "react";
 import CardStyle from "./style";
-import { IData } from "../../views/Home/Home";
 
-function Card({ name, collection, recipes }: IData): JSX.Element {
+function Card({ fruits }: any): JSX.Element {
+  const { name, recipes, collection } = fruits;
   return (
     <CardStyle className="col-md-6 col-lg-3 mt-5" data-test="card-component">
       <div className="card p-4">
@@ -17,7 +17,7 @@ function Card({ name, collection, recipes }: IData): JSX.Element {
           <hr />
           <ol className=" recipe-list" data-test="recipe-container">
             {recipes && recipes.length ? (
-              recipes.map((recipe) => <li key={recipe}> {recipe}</li>)
+              recipes.map((recipe: string) => <li key={recipe}> {recipe}</li>)
             ) : (
               <p>no recipes here</p>
             )}

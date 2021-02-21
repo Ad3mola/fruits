@@ -52,15 +52,8 @@ function Home(): JSX.Element {
       {/* <Search handleSubmit={handleSubmit} /> */}
       {fruits.length ? (
         <div className="row mx-auto mt-5" data-test="fruit-container">
-          {fruits.map(({ id, name, collection, recipes, is_allergen }) => (
-            <Card
-              key={id}
-              name={name}
-              id={id}
-              collection={collection}
-              recipes={recipes}
-              is_allergen={is_allergen}
-            />
+          {fruits.map((fruit) => (
+            <Card key={fruit.id} fruits={fruit} />
           ))}
         </div>
       ) : (
