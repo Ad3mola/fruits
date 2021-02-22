@@ -7,7 +7,7 @@ import Card from "../../reusables/card/Card";
 export interface IData {
   id: number;
   name: string;
-  recipes: string[];
+  recipes: string | string[];
   is_allergen: boolean;
   collection: string;
 }
@@ -24,10 +24,8 @@ export interface IData {
 // type FormElem = React.FormEvent<HTMLFormElement>;
 
 function Home(): JSX.Element {
-  const data: IData[] = useObjectFix();
-
+  const data = useObjectFix();
   // const [fruits, setFruits] = useState(data);
-
   // const handleSubmit = (e: FormElem, value: string): void => {
   //   e.preventDefault();
   //   const fruit = fruits.filter((fruit) =>
@@ -39,20 +37,18 @@ function Home(): JSX.Element {
   //   }
   //   setFruits(data);
   // };
-
   /* Organic Banana function */
   const recipe: string = "Organic Banana";
-  const fruits = data.filter((fruit) =>
+  const fruits = data.filter((fruit: IData) =>
     fruit.recipes.includes(recipe.toLowerCase())
   );
-
   return (
     <div data-test="home-component">
       <h1 className="my-3 text-center">FRUITS</h1>
       {/* <Search handleSubmit={handleSubmit} /> */}
       {fruits.length ? (
         <div className="row mx-auto mt-5" data-test="fruit-container">
-          {fruits.map((fruit) => (
+          {fruits.map((fruit: IData) => (
             <Card key={fruit.id} fruits={fruit} />
           ))}
         </div>

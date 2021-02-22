@@ -1,8 +1,16 @@
 import productsData from "../data/products.json";
 import ingredientsData from "../data/ingredients.json";
 
-const useObjectFix = () => {
-  let newJson = [];
+interface IJson {
+  id: number;
+  name: string;
+  recipes: string | string[];
+  is_allergen: boolean;
+  collection: string;
+}
+
+const useObjectFix = (): IJson[] => {
+  let newJson: IJson[] = [];
 
   //CROSS-REFERENCE THE TWO FILES TO GET THE INGREDIENT NAMES THROUGH THEIR IDS IN PRODUCTS' OBJECT
   productsData.products.map((product) => {
@@ -24,9 +32,9 @@ const useObjectFix = () => {
   });
 
   //FINAL RESULT TO REMOVE DUPLICATE KEYS FROM NEWJSON OBJECT AND GROUP THEIR UNIQUE VALUES
-  const finalResult = Object.values(
+  const finalResult: IJson[] = Object.values(
     newJson.reduce(
-      (products, { name, id, recipes, collection, is_allergen }) => {
+      (products: any, { name, id, recipes, collection, is_allergen }) => {
         let product = products[id];
         !product
           ? (products[id] = {
